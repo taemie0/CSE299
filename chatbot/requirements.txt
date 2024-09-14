@@ -1,10 +1,32 @@
 langchain
 transformers
 sentence-transformers
-requests
+# requests
 chromadb
-torch
+# torch
 pypdf
+python-dotenv
+
+# streamlit (if using Streamlit for the UI)
+# pandas (if needed)
+# scikit-learn (if needed)
+# faiss-cpu or faiss-gpu (if using Faiss for vector search)
+ 
+# tqdm
+# gitpython
+# matplotlib
+# seaborn
+# pytest
+# flask
+# # fastapi (if using)
+# scipy
+# pyyaml
+# h5py
+
+
+
+
+
 # MarkupSafe==2.1.5
 # Pillow==10.4.0
 # PyYAML==6.0.2
