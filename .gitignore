@@ -1,0 +1,27 @@
+# Virtual environment files
+env/
+venv/
+
+# Python cache files
+*.pyc
+__pycache__/
+
+# Python compiled files
+*.py[cod]
+*.log
+
+# Node.js
+node_modules/
+npm-debug.log
+
+# Ignore VSCode settings
+.vscode/
+
+# Ignore sensitive data like environment variables
+.env
+
+# Flask instance folder
+instance/
+
+# Windows-specific files
+Thumbs.db
