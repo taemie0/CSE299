@@ -1,4 +1,6 @@
 langchain
+langchain-community
+langchain-chroma
 transformers
 sentence-transformers
 # requests
@@ -6,6 +8,9 @@ chromadb
 # torch
 pypdf
 python-dotenv
+langchain-aws
+boto3
+
 
 # streamlit (if using Streamlit for the UI)
 # pandas (if needed)
