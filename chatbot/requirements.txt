@@ -5,7 +5,7 @@ transformers
 sentence-transformers
 # requests
 chromadb
-# torch
+torch
 pypdf
 python-dotenv
 langchain-aws

@@ -17,13 +17,12 @@ Answer the question based only on the following context:
 
 Answer the question based on the above context: {question}
 """
-# Load model from config
+
 def load_config():
     with open("config.yaml", "r") as f:
         return yaml.safe_load(f)
 
 def main():
-    # Create CLI.
     parser = argparse.ArgumentParser()
     parser.add_argument("query_text", type=str, help="The query text.")
     args = parser.parse_args()
@@ -32,7 +31,6 @@ def main():
 
 
 def query_rag(query_text: str):
-    # Load model from config
     config = load_config()
     model_name = config.get("model_name", "gemma2:2b")  # Default to "gemma2:2b" if not set
 
@@ -48,7 +46,7 @@ def query_rag(query_text: str):
     prompt = prompt_template.format(context=context_text, question=query_text)
     # print(prompt)
 
-    model = Ollama(model="gemma2:2b")
+    model = Ollama(model=model_name)
     response_text = model.invoke(prompt)
 
     sources = [doc.metadata.get("id", None) for doc, _score in results]
