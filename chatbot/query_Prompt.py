@@ -16,6 +16,11 @@ Answer the question based only on the following context:
 ---
 
 Answer the question based on the above context: {question}
+
+---
+
+Answer the question based on you are a languag model who will understand the context and answer the question.
+
 """
 
 def load_config():

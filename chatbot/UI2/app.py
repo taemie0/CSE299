@@ -34,7 +34,8 @@ def init_session_state():
     st.session_state.setdefault('current_session', st.session_state.sessions[0])
     st.session_state.setdefault('chat_history', [])
     st.session_state.setdefault('user_input', "")
-    st.session_state.setdefault('selected_model', 'LLaMA')  # Default model
+    st.session_state.setdefault('selected_model', 'gemma2:2b') 
+    st.session_state.setdefault('disabled', False)
 
 # ========== UI Functions ==========
 
@@ -75,15 +76,19 @@ def handle_user_input(user_input):
     """Handle user input and send it to the backend"""
 
     if user_input:
+        st.session_state.disabled = True
         st.session_state.chat_history.append({'role': 'user', 'content': user_input})
-        st.session_state.user_input = ""  # Clear user input
-        # display_chat()
+        display_chat()
+        
+        
         # Prepare data for the API request
         api_url = 'http://127.0.0.1:5000/'  
         data = {
             'message': user_input,
             'currentModel': st.session_state.selected_model  # Pass the current model from session state
         }
+
+        st.session_state.user_input = ""  # Clear user input
 
         response = requests.post(api_url, json=data)
         if response.status_code == 200:
@@ -92,9 +97,9 @@ def handle_user_input(user_input):
             bot_response = 'Error: Failed to connect to backend'
 
         st.session_state.chat_history.append({'role': 'bot', 'content': bot_response})
-        # st.session_state.user_input = ""  # Clear user input
+        st.session_state.disabled = False
   
-        # display_chat()
+        display_chat()
 
 # ========== Main App ==========
 
@@ -127,10 +132,16 @@ def main():
     display_chat()
     st.markdown('</div>', unsafe_allow_html=True)
 
-    # Capture user input
-    user_input = st.chat_input()
+
+    user_input = st.chat_input(placeholder="Type your message...", disabled=st.session_state.disabled , on_change=disable)
     if user_input:
         handle_user_input(user_input)
+    
+if "disabled" not in st.session_state:
+    st.session_state["disabled"] = False
+
+def disable():
+    st.session_state["disabled"] = True
 
 if __name__ == "__main__":
     main()
