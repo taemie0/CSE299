@@ -10,19 +10,21 @@ To set up MongoDB for this project, follow these steps:
    mongod --dbpath /path/to/your/db --port 27017
    ```
 3. **Database Initialization**:
+   ```bash
    - cd E:\CSE299\chatbot\chat_memory
    - python dummy.py
+   ```
 
 ## Frontend
 
-```bash
-- cd E:\CSE299\chatbot\UI2
-- python test_run.py (to query with chat memory)
-```
+   ```bash
+   - cd E:\CSE299\chatbot\UI2
+   - python test_run.py (to query with chat memory)
+   ```
 
 ## Backend
 
-```bash
-- cd E:\CSE299\chatbot
-- streamlit run app.py
-```
+   ```bash
+   - cd E:\CSE299\chatbot
+   - streamlit run app.py
+   ```
