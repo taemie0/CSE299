@@ -15,10 +15,14 @@ To set up MongoDB for this project, follow these steps:
 
 ## Frontend
 
+```bash
 - cd E:\CSE299\chatbot\UI2
 - python test_run.py (to query with chat memory)
+```
 
 ## Backend
 
+```bash
 - cd E:\CSE299\chatbot
 - streamlit run app.py
+```
