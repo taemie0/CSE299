@@ -18,20 +18,21 @@ def load_css():
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
 def delete_session(session_name):
-    try:
-        response = requests.delete(f"http://127.0.0.1:5000/delete_session/{session_name}")
-        if response.status_code == 200:
+    time.sleep(1)  # Simulate delay
+    # try:
+    #     response = requests.delete(f"http://127.0.0.1:5000/delete_session/{session_name}")
+    #     if response.status_code == 200:
             
-            # Remove the session from the state after successful deletion
-            st.session_state.sessions = [s for s in st.session_state.sessions if s['session_name'] != session_name]
-            st.session_state.current_session = None  # Clear current session if deleted
-            st.session_state.chat_history = []  # Clear chat history
-            st.success("Session deleted successfully.")
-            st.rerun()
-        else:
-            st.error("Failed to delete session.")
-    except requests.exceptions.RequestException as e:
-        st.error(f"Error deleting session: {e}")
+    #         # Remove the session from the state after successful deletion
+    #         st.session_state.sessions = [s for s in st.session_state.sessions if s['session_name'] != session_name]
+    #         st.session_state.current_session = None  # Clear current session if deleted
+    #         st.session_state.chat_history = []  # Clear chat history
+    #         st.success("Session deleted successfully.")
+    #         st.rerun()
+    #     else:
+    #         st.error("Failed to delete session.")
+    # except requests.exceptions.RequestException as e:
+    #     st.error(f"Error deleting session: {e}")
 
 
 def create_new_session():
@@ -47,25 +48,25 @@ def create_new_session():
         'chat_history': []  # Initialize with an empty chat history
     }
 
-    # Send the new session to the backend
-    try:
-        response = requests.post("http://127.0.0.1:5000/create_session", json=new_session)
-        if response.status_code == 201:  # Check if the creation was successful
-            st.session_state.sessions.append(new_session)  # Add to the session state
-            st.session_state.current_session = new_session_name
+    # # Send the new session to the backend
+    # try:
+    #     response = requests.post("http://127.0.0.1:5000/create_session", json=new_session)
+    #     if response.status_code == 201:  # Check if the creation was successful
+    #         st.session_state.sessions.append(new_session)  # Add to the session state
+    #         st.session_state.current_session = new_session_name
             
-            success_placeholder = st.empty()  
-            success_placeholder.success(f"Created new session: {new_session_name}")
+    #         success_placeholder = st.empty()  
+    #         success_placeholder.success(f"Created new session: {new_session_name}")
 
-            # Wait for a few seconds before clearing the message
-            time.sleep(1)  # Wait for 2 seconds
-            success_placeholder.empty()  # Clear the message
-            st.session_state.chat_history = new_session['chat_history']
-            st.rerun()
-        else:
-            st.error("Failed to create session in the backend.")
-    except requests.exceptions.RequestException as e:
-        st.error(f"Error creating session: {e}")
+    #         # Wait for a few seconds before clearing the message
+    #         time.sleep(1)  # Wait for 2 seconds
+    #         success_placeholder.empty()  # Clear the message
+    #         st.session_state.chat_history = new_session['chat_history']
+    #         st.rerun()
+    #     else:
+    #         st.error("Failed to create session in the backend.")
+    # except requests.exceptions.RequestException as e:
+    #     st.error(f"Error creating session: {e}")
     
 # Fetch session data from the backend
 def fetch_sessions():
@@ -167,23 +168,26 @@ load_css()
 
 
 with st.sidebar:
-    col1, col2 = st.columns([1, 3])
-    if col1.button("➕", key="new_session"):
+    # First row with the button
+    col1 = st.columns([1])
+    if col1[0].button("+ New Chat", key="new_session"):
         create_new_session()
-    
-    selected_model = col2.selectbox("Choose a Model:", ['gemma2:2b','mistral:latest','llama3.1:latest'])
 
-    if selected_model != st.session_state.previous_model:
-        response = requests.post("http://127.0.0.1:5000/update_model", json={"model_name": selected_model})
-        if response.status_code == 200:
-            success_message = st.empty()  # Create an empty placeholder
-            success_message.success("Model updated in config.yaml!")
-            st.session_state.previous_model = selected_model
-            st.session_state.success_message_visible = True
-            time.sleep(2)  
-            success_message.empty()  
-        else:
-            st.error("Failed to update model in config.yaml.")
+    # Second row with the selectbox
+    col2 = st.columns([1])
+    selected_model = col2[0].selectbox("Choose a Model:", ['gemma2:2b','mistral:latest','llama3.1:latest'])
+
+    # if selected_model != st.session_state.previous_model:
+    #     response = requests.post("http://127.0.0.1:5000/update_model", json={"model_name": selected_model})
+    #     if response.status_code == 200:
+    #         success_message = st.empty()  # Create an empty placeholder
+    #         success_message.success("Model updated in config.yaml!")
+    #         st.session_state.previous_model = selected_model
+    #         st.session_state.success_message_visible = True
+    #         time.sleep(2)  
+    #         success_message.empty()  
+    #     else:
+    #         st.error("Failed to update model in config.yaml.")
     session_management_ui()
 
 st.markdown("<h4 style='text-align: left; color: white;'>Physics ChatBot</h4>", unsafe_allow_html=True)
@@ -201,19 +205,19 @@ st.chat_input(placeholder="Type your message...",
 # requesting for response in backend
 if st.session_state.user_input:
     time.sleep(2)  # Simulate bot response time
-    api_url = 'http://127.0.0.1:5000/query'  
-    data = {
-        'message': st.session_state.user_input,
-        'currentModel': st.session_state.selected_model,
-        'currentSession': st.session_state.current_session
-    }
-    response = requests.post(api_url, json=data)
-    if response.status_code == 200:
-        bot_response = response.json().get('message', 'Error: No response from server')
-        st.session_state.chat_history.append({'role': 'bot', 'content': bot_response})
-        st.session_state.disabled = False
-        st.rerun()
-    else:
-        bot_response = 'Error: Failed to connect to backend'
+    # api_url = 'http://127.0.0.1:5000/query'  
+    # data = {
+    #     'message': st.session_state.user_input,
+    #     'currentModel': st.session_state.selected_model,
+    #     'currentSession': st.session_state.current_session
+    # }
+    # response = requests.post(api_url, json=data)
+    # if response.status_code == 200:
+    #     bot_response = response.json().get('message', 'Error: No response from server')
+    #     st.session_state.chat_history.append({'role': 'bot', 'content': bot_response})
+    #     st.session_state.disabled = False
+    #     st.rerun()
+    # else:
+    #     bot_response = 'Error: Failed to connect to backend'
 
 
