@@ -17,8 +17,6 @@ To set up MongoDB for this project, follow these steps:
 
 ## Frontend
 
-(to query with chat memory)
-
 ```bash
 - cd E:\CSE299\chatbot\Frontend
 - streamlit run test_App.py
@@ -26,7 +24,18 @@ To set up MongoDB for this project, follow these steps:
 
 ## Backend
 
+(to query with chat memory)
+
 ```bash
 - cd E:\CSE299\chatbot
-- streamlit run app.py
+- python test_run.py
+```
+
+Or,
+
+(to normal query)
+
+```bash
+- cd E:\CSE299\chatbot
+- python app.py
 ```
