@@ -27,7 +27,7 @@ To set up MongoDB for this project, follow these steps:
 (to query with chat memory)
 
 ```bash
-- cd E:\CSE299\chatbot
+- cd E:\CSE299\chatbot\Backend
 - python test_run.py
 ```
 
@@ -36,6 +36,6 @@ Or,
 (to normal query)
 
 ```bash
-- cd E:\CSE299\chatbot
+- cd E:\CSE299\chatbot\Backend
 - python app.py
 ```
