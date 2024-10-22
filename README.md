@@ -11,20 +11,22 @@ To set up MongoDB for this project, follow these steps:
    ```
 3. **Database Initialization**:
    ```bash
-   - cd E:\CSE299\chatbot\chat_memory
+   - cd E:\CSE299\chatbot\Backend\MongoDB\dummy.py
    - python dummy.py
    ```
 
 ## Frontend
-   (to query with chat memory) 
-   ```bash
-   - cd E:\CSE299\chatbot\UI2
-   - python test_run.py 
-   ```
+
+(to query with chat memory)
+
+```bash
+- cd E:\CSE299\chatbot\Frontend
+- streamlit run test_App.py
+```
 
 ## Backend
 
-   ```bash
-   - cd E:\CSE299\chatbot
-   - streamlit run app.py
-   ```
+```bash
+- cd E:\CSE299\chatbot
+- streamlit run app.py
+```
