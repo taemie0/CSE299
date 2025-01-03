@@ -25,3 +25,8 @@ instance/
 
 # Windows-specific files
 Thumbs.db
+
+# Hugging Face Embedding Model
+llm/
+
+Embedding/

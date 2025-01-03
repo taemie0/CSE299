@@ -1,1 +1,5 @@
-model_name: gemma2:2b
+embedding_model_name: sentence-transformers/all-MiniLM-L6-v2
+embedding_model_save_path: E:/CSE299/chatbot/llm/miniml
+embedding_vector_db_path: E:/CSE299/chatbot/Embedding/miniml/recursive
+model_name: qwen2.5:3b
+query_expansion_model_name: E:/CSE299/chatbot/llm/paraphrase-MiniLM-L6-v2

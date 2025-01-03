@@ -1,3 +1,11 @@
+""""
+
+Note: Did not use this file ! Downloaded the embedding using Notebook via Google Colab.
+
+
+"""
+
+
 from typing import Any, Dict, List, Optional  # type: ignore[import-not-found]
 
 from langchain_core.embeddings import Embeddings
