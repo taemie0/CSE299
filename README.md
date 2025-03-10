@@ -2,40 +2,22 @@
 
 ## MongoDB Setup
 
-To set up MongoDB for this project, follow these steps:
-
-1. **Install MongoDB**: [MongoDB Installation Guide](https://docs.mongodb.com/manual/installation/)
-2. **Start MongoDB**: Run the following command to start MongoDB on the default port (27017).
+## **Database Initialization with dummy values**:
    ```bash
-   mongod --dbpath /path/to/your/db --port 27017
-   ```
-3. **Database Initialization**:
-   ```bash
-   - cd E:\CSE299\chatbot\Backend\MongoDB\dummy.py
-   - python dummy.py
+   - .\MongoDB\dummy2.py
+   - python dummy2.py
    ```
 
 ## Frontend
 
 ```bash
-- cd E:\CSE299\chatbot\Frontend
-- streamlit run test_App.py
+- streamlit run {frontend_file}.py
 ```
 
 ## Backend
 
-(to query with chat memory)
-
 ```bash
-- cd E:\CSE299\chatbot\Backend
-- python test_run.py
+- python {backend_file}.py
 ```
 
-Or,
 
-(to normal query)
-
-```bash
-- cd E:\CSE299\chatbot\Backend
-- python app.py
-```
