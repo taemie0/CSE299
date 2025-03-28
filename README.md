@@ -1,41 +1,49 @@
-# CSE299
+# Local Chatbot
+
+## Chatbot Pipeline
+
+![Chatbot Pipeline](../Images/Pipeline.png)
+
+## Installing Local Embedding Models
+
+- Navigate to the notebook directory and open it:
+
+  ```bash
+  cd ..\CSE299\chatbot\rag_tests
+  jupyter notebook Install_Local_HuggingFace_EmbeddingModels.ipynb
+  ```
+
+- Follow the instructions in the notebook to install embedding models.
+- Create the embedded vector database using chunking methods (character/recursive/semantic).
+- Embedded vector database can be created in any cloud service and downloaded for use, but the embedding models must be installed locally.
 
 ## MongoDB Setup
 
-To set up MongoDB for this project, follow these steps:
+- **Start MongoDB**:  
 
-1. **Install MongoDB**: [MongoDB Installation Guide](https://docs.mongodb.com/manual/installation/)
-2. **Start MongoDB**: Run the following command to start MongoDB on the default port (27017).
-   ```bash
-   mongod --dbpath /path/to/your/db --port 27017
-   ```
-3. **Database Initialization**:
-   ```bash
-   - cd E:\CSE299\chatbot\Backend\MongoDB\dummy.py
-   - python dummy.py
-   ```
+  ```bash
+  mongod --dbpath /path/to/your/db --port 27017
+  ```
 
-## Frontend
+- **Initialize the Database**:
 
-```bash
-- cd E:\CSE299\chatbot\Frontend
-- streamlit run test_App.py
-```
+  ```bash
+  cd ..\CSE299\chatbot\Backend\MongoDB
+  python dummy_2.py
+  ```
 
-## Backend
+## Running the Chatbot
 
-(to query with chat memory)
+- **Frontend**:
 
-```bash
-- cd E:\CSE299\chatbot\Backend
-- python test_run.py
-```
+  ```bash
+  cd ..\CSE299\chatbot\Frontend
+  streamlit run stream_app.py
+  ```
 
-Or,
+- **Backend**:
 
-(to normal query)
-
-```bash
-- cd E:\CSE299\chatbot\Backend
-- python app.py
-```
+  ```bash
+  cd ..\CSE299\chatbot\Backend
+  python stream_app.py
+  ```

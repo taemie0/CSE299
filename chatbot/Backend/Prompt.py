@@ -251,3 +251,8 @@ Please provide a concise and accurate response, but if conceptual, provide a det
 If you have relevant information, please provide it and ask the user if they would like to know more.
 '''
 
+NEW_COT_PROMPT_WITH_HISTORY = '''
+Here is the conversation so far: {history}
+You can use the context found in book for the question:  {context} 
+Now, answer the question: {question} 
+'''
