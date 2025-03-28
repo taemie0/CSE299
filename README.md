@@ -1,8 +1,8 @@
-# Local Chatbot
+# Local LLM RAG Chatbot
 
 ## Chatbot Pipeline
 
-![Chatbot Pipeline](Images/Pipeline.png)
+<img src="Images/Pipeline.png" alt="Chatbot Pipeline" width="80%">
 
 ## Installing Local Embedding Models
 
@@ -16,6 +16,11 @@
 - Follow the instructions in the notebook to install embedding models.
 - Create the embedded vector database using chunking methods (character/recursive/semantic).
 - Embedded vector database can be created in any cloud service and downloaded for use, but the embedding models must be installed locally.
+
+## Installing Local LLMs
+
+- Install Ollama and pull the models you want to use.
+- Update the Config.yaml with the model paths.
 
 ## MongoDB Setup
 
