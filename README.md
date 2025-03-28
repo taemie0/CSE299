@@ -2,7 +2,7 @@
 
 ## Chatbot Pipeline
 
-![Chatbot Pipeline](../Images/Pipeline.png)
+![Chatbot Pipeline](Images/Pipeline.png)
 
 ## Installing Local Embedding Models
 
