@@ -43,6 +43,7 @@
 =======
 ```bash
 - streamlit run {frontend_file}.py
+- streamlit run {frontend_file}.py
 ```
 >>>>>>> a955b4d32191de07761a776728bc8519b5f5d492
 
